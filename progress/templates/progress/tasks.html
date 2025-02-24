@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks for User {{ user_id }}</title>
+</head>
+<body>
+    <h1>Tasks for User {{ user_id }}</h1>
+
+
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Completed</th>
+                    <th>Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                <tr>
+                    <td>{{ task.title }}</td>
+                    <td>
+                        <!-- Ensure the checkbox reflects the task's completed state -->
+                        <input type="checkbox" name="task_{{ task.id }}" {% if task.completed %}checked{% endif %}>
+                    </td>
+                    <td>
+                        <input type="text" name="comment_{{ task.id }}" value="{{ task.comment }}">
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit">Update Tasks</button>
+    </form>
+    
+</body>
+</html>
