@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from progress.models import Task
 
-def task_list(request, course_code, user_id):
+def task_list(request, course_id, user_id):
     # Fetch the tasks to display on the page
-    tasks = Task.objects.filter(course_code=course_code, user_id=user_id).order_by('sort_order')
+    tasks = Task.objects.filter(course__id=course_id, user_id=user_id).order_by('sort_order')
     
     if request.method == 'POST':
         # Loop through the tasks and update their state based on the form data
