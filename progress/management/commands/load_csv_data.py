@@ -16,10 +16,9 @@ class Command(BaseCommand):
                 # Create Task objects from CSV data
                 Task.objects.create(
                     course_code=row['course'],
-                    week_num=row['week'],
                     user_id=row['user'],
-                    title=row['title'],
                     sort_order=row['sort_order'],
+                    title=row['title'],
                     completed=row['completed'] == 'True',
                     comment=row['comment']
                 )
