@@ -28,6 +28,7 @@ def load_tasks(csv_file_path):
             Task.objects.create(
                 course_id=row['course'],  # ForeignKey reference
                 user_id=row['user'],
+                day=row['day'],
                 sort_order=row['sort_order'],
                 title=row['title'],
                 completed=row['completed'].lower() == 'true',  # Convert text to Boolean
@@ -40,5 +41,5 @@ if __name__ == "__main__":
     course_csv = "data/courses.csv"
     task_csv = "data/tasks.csv"
 
-    load_courses(course_csv)
+    #load_courses(course_csv)
     load_tasks(task_csv)

@@ -3,5 +3,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('<int:course_id>/<int:user_id>/', views.task_list, name='task_list'),
+    path('<str:course_id>/<int:user_id>/', views.task_list, name='task_list'),
 ]
